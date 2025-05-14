@@ -7,18 +7,46 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Dependency directories
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Production bundle
 *.local
+
+# dotenv environment files
+.env
+.env.*.local
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Misc
+coverage/
+*.tgz
+.cache/
+.parcel-cache/
+.eslintcache
+
+# Mac system files
+*.DS_Store
+
+# Optional npm cache directory
+.npm/
+
+# Optional yarn cache directory
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.pnp.*
