@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
 export default function ChatWidget() {
@@ -56,6 +56,12 @@ export default function ChatWidget() {
     }
   };
 
+  const messagesEndRef = useRef(null);
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+
   return (
     <div className="fixed bottom-6 right-6 z-50">
       {open ? (
@@ -64,7 +70,7 @@ export default function ChatWidget() {
             <h4 className="font-semibold">SoftSell AI Chat</h4>
             <button onClick={() => setOpen(false)} className="text-white text-lg">✕</button>
           </div>
-          <div className="flex-1 p-3 h-64 overflow-y-auto space-y-2">
+          <div className="flex-1 overflow-y-auto px-3 py-2 space-y-2 max-h-64">
             {messages.map((msg, index) => (
               <div
                 key={index}
@@ -77,6 +83,7 @@ export default function ChatWidget() {
                 {msg.text}
               </div>
             ))}
+            <div ref={messagesEndRef} />
           </div>
           <div className="px-3 pb-2">
             {suggested.map((q, i) => (
